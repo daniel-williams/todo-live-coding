@@ -1,0 +1,16 @@
+@import './test.scss';
+
+section {
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  &:hover {
+    filter: blur(1px);
+  }
+}
+
+.canvas {
+  background-color: #345333;
+}
