@@ -1,0 +1,26 @@
+.controlsWrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  height: 50px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #bbbbbb;
+
+  .controls {
+    display: flex;
+    align-items: center;
+    padding-right: 5px;
+    width: 20px;
+
+    .icon {
+      font-size: 20px;
+      width: 20px;
+      cursor: pointer;
+      color: #bbbbbb;
+    }
+  }
+  .newItemWrap {
+    position: relative;
+    flex-grow: 100;
+  }
+}

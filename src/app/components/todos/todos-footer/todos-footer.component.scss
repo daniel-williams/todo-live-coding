@@ -1,0 +1,44 @@
+.footerWrap {
+  display: flex;
+  justify-content: space-between;
+  color: #bbbbbb;
+
+  .footerItem {
+    display: flex;
+    margin-right: 30px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+    .footerLabel {
+      padding-right: 5px;
+    }
+  }
+  .filterWrap {
+    display: flex;
+  }
+  .removeCompleted {
+    cursor: pointer;
+  }
+  .footerButton {
+    padding: 3px 5px;
+    border-radius: 4px;
+
+    line-height: 1;
+
+    border: 1px solid #bbbbbb;
+    margin-right: 5px;
+    cursor: pointer;
+    transition: all .5s ease-out;
+
+    &.active {
+      background-color: rgba(0, 0, 200, 0.1);
+      color: darkgray;
+      border: 1px solid darkgray;
+      cursor: default;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

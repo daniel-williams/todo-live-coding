@@ -1,0 +1,28 @@
+.itemWrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: baseline;
+  align-content: center;
+  height: 50px;
+  border-bottom: 1px solid #999999;
+
+  .item {
+    position: relative;
+    flex-grow: 100;
+    overflow: hidden;
+  }
+
+  .icon {
+    font-size: 20px;
+    width: 20px;
+    cursor: pointer;
+    color: #bbbbbb;
+  }
+  .icon:last-child {
+    text-align: right;
+  }
+  .completedIcon {
+    padding-right: 5px;
+  }
+}

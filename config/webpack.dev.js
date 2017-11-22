@@ -1,6 +1,5 @@
-var commonConfig = require('./webpack.common.js');
-var helpers = require('./helpers');
-
+const commonConfig = require('./webpack.common.js');
+const helpers = require('./helpers');
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 
@@ -37,9 +36,18 @@ module.exports = function (options) {
         },
         {
           test: /\.scss$/,
+          include: [helpers.root('src', 'app')],
           use: [
             { loader: "style-loader" }, // creates style nodes from JS strings
-            { loader: "css-loader" }, // translates CSS into CommonJS
+            {
+              loader: 'css-loader',
+              query: {
+                modules: true,
+                sourceMap: true,
+                importLoaders: 1,
+                localIdentName: '[local]__[hash:base64:5]'
+              }
+            },
             {
               loader: 'postcss-loader',
               options: {

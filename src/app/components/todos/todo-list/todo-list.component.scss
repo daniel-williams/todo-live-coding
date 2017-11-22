@@ -1,0 +1,23 @@
+section.todoList {
+  position: relative;
+
+  .controls {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    border-bottom: 1px solid #bbbbbb;
+
+    .icon {
+      font-size: 20px;
+      width: 20px;
+      cursor: pointer;
+      color: #bbbbbb;
+    }
+  }
+  ul.todoList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+}
+

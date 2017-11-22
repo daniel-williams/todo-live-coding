@@ -1,10 +1,9 @@
+const commonConfig = require('./webpack.common.js');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const helpers = require('./helpers');
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
-
-const commonConfig = require('./webpack.common.js');
-const helpers = require('./helpers');
 
 const ENV = process.env.ENV = process.env.NODE_ENV || 'production';
 const HOST = process.env.HOST || 'localhost';
@@ -17,7 +16,7 @@ const METADATA = {
   ENV: ENV
 };
 
-const extractSass = new ExtractTextPlugin({
+const extractedAppStyles = new ExtractTextPlugin({
   filename: "assets/bundles/[name].[contenthash].css"
 });
 
@@ -38,9 +37,18 @@ module.exports = function (options) {
         },
         {
           test: /\.scss$/,
-          use: extractSass.extract({
+          include: [helpers.root('src', 'app')],
+          use: extractedAppStyles.extract({
             use: [
-              { loader: "css-loader" }, // translates CSS into CommonJS
+              {
+                loader: 'css-loader',
+                query: {
+                  modules: true,
+                  sourceMap: false,
+                  importLoaders: 1,
+                  localIdentName: '[local]__[hash:base64:5]'
+                }
+              },
               {
                 loader: 'postcss-loader',
                 options: {
@@ -60,16 +68,16 @@ module.exports = function (options) {
       ],
     },
     plugins: [
-      extractSass,
       new webpack.NoEmitOnErrorsPlugin(),
       new webpack.optimize.UglifyJsPlugin({
         compress: {
-            warnings: false
+          warnings: false
         }
       }),
       new CopyWebpackPlugin([
         { from: './client/assets', to: './assets' }
-      ])
+      ]),
+      extractedAppStyles,
     ]
   });
 };

@@ -2,19 +2,10 @@
   "name": "react-mobx-nimble",
   "version": "1.0.0",
   "license": "MIT",
-  "description": "Hacking starter",
-  "author": {
-    "name": "Daniel James Williams",
-    "email": "mail@danielwilliams.us"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/daniel-williams/react-mobx-nimble"
-  },
+  "description": "Todo app w/React, Mobx and Nimble",
   "scripts": {
     "start": "npm run dev",
     "dev": "cross-env NODE_ENV=dev npm run webpack-dev-server",
-    "remote": "cross-env NODE_ENV=remote npm run webpack-dev-server",
     "build:stag": "cross-env NODE_ENV=staging npm run webpack-build",
     "build:prod": "cross-env NODE_ENV=production npm run webpack-build",
     "webpack-build": "rimraf dist && webpack --config config/webpack.build.js --progress --profile --bail",
@@ -22,30 +13,19 @@
     "_start": "webpack-dev-server -d --history-api-fallback --hot --inline --progress --colors --port 3000 --open",
     "_build": "webpack -p --progress --colors"
   },
-  "keywords": [
-    "MobX",
-    "React",
-    "seed",
-    "starter",
-    "Typescript",
-    "Webpack"
-  ],
   "main": "index.js",
   "dependencies": {
     "classnames": "^2.2.5",
     "mobx": "^3.3.1",
     "mobx-react": "^4.3.3",
-    "mobx-react-router": "^4.0.1",
     "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "react-router": "^4.2.0"
+    "react-dom": "^16.0.0"
   },
   "devDependencies": {
     "@types/classnames": "^2.2.3",
     "@types/node": "^8.0.46",
     "@types/react": "^16.0.16",
     "@types/react-dom": "^16.0.2",
-    "@types/react-router": "^4.0.16",
     "@types/webpack": "^3.0.13",
     "awesome-typescript-loader": "^3.2.3",
     "copy-webpack-plugin": "^4.2.1",
@@ -67,7 +47,8 @@
     "rimraf": "^2.6.2",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.0",
-    "typescript": "^2.5.3",
+    "to-string-loader": "^1.1.5",
+    "typescript": "3.8.3",
     "url-loader": "^0.6.2",
     "webpack": "^3.8.1",
     "webpack-dev-server": "^2.9.3",

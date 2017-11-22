@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "sourceMap": true,
-    "target": "es5",
+    "target": "ES2015",
     "jsx": "react",
     "module": "commonjs",
     "moduleResolution": "node",
@@ -13,11 +13,14 @@
     "removeComments": true,
     "strictNullChecks": false,
     "lib": [
-      "es2016",
+      "ES2015",
+      "ES2016",
+      "ES2017",
       "dom"
     ]
   },
   "include": [
-    "src"
+    "src",
+    "config/typings"
   ]
 }
