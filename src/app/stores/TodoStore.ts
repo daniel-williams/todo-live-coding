@@ -10,14 +10,8 @@ export class TodoStore {
   }
 
   @action
-  editTodo = (id: number, data: Partial<Todo>): void => {
-    this.todos = this.todos.map(x => x.id !== id
-      ? x
-      : {
-        ...x,
-        text: data.text ? data.text.toString() : x.text,
-        completed: !!data.completed,
-      });
+  editTodo = (id: number, todo: Partial<Todo>): void => {
+    this.todos[id] = {...this.todos[id], ...todo};
   }
 
   @action
