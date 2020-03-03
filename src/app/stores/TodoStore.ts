@@ -1,38 +1,8 @@
-import { action, computed , observable } from 'mobx';
-import { Todo, TodoFilter } from '../models';
+import { action , observable } from 'mobx';
+import { Todo } from '../models';
 
 export class TodoStore {
   @observable todos: Todo[] = [];
-  @observable filter: TodoFilter = TodoFilter.All;
-
-  @computed
-  get active() {
-    return this.todos.filter(x => !x.completed);
-  }
-
-  @computed
-  get completed() {
-    return this.todos.filter(x => x.completed);
-  }
-
-  @computed
-  get filtered(): Todo[] {
-    let filteredTodos: Todo[] = [];
-
-    switch(this.filter) {
-      case TodoFilter.Active:
-        filteredTodos = this.active;
-        break;
-      case TodoFilter.Completed:
-        filteredTodos = this.completed;
-        break;
-      default:
-        filteredTodos = this.todos;
-        break;
-    }
-
-    return filteredTodos;
-  }
 
   @action
   addTodo = (todo: Partial<Todo>): void => {
@@ -66,10 +36,5 @@ export class TodoStore {
   @action
   removeCompleted = (): void => {
     this.todos = this.todos.filter(x => !x.completed);
-  }
-
-  @action
-  setTodoFilter = (filter: TodoFilter): void => {
-    this.filter = filter;
   }
 }

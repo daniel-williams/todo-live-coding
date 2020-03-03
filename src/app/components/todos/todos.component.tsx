@@ -19,26 +19,19 @@ export class Todos extends React.Component<{}> {
   }
 
   render() {
-    const { addTodo, filtered, setTodoFilter, removeCompleted, filter } = this.todoStore;
-    const totalCount = filtered.length;
-    const remainingCount = filtered.filter(x => !x.completed).length;
+    const { addTodo, removeCompleted, todos } = this.todoStore;
 
     return (
       <div className={styles.todoWrap}>
         <TodosHeader
-          showToggle={!!filtered.length}
+          showToggle={!!todos.length}
           addTodo={addTodo}
           toggleAll={this.handleToggleAll}
         />
         <div className={styles.todoItemsWrap}>
-          {this.renderTodos(filtered)}
+          {this.renderTodos(todos)}
         </div>
-        <TodosFooter
-          totalCount={totalCount}
-          remainingCount={remainingCount}
-          setTodoFilter={setTodoFilter}
-          removeCompleted={removeCompleted}
-          currentFilter={filter}/>
+        <TodosFooter removeCompleted={removeCompleted} />
       </div>
     );
   }
@@ -56,8 +49,8 @@ export class Todos extends React.Component<{}> {
   }
 
   private handleToggleAll = () => {
-    const { filtered, toggleCompleted } = this.todoStore;
+    const { todos, toggleCompleted } = this.todoStore;
 
-    toggleCompleted(!filtered.every(x => x.completed));
+    toggleCompleted(!todos.every(x => x.completed));
   }
 }

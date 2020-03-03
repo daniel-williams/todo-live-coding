@@ -1,7 +1,8 @@
 .footerWrap {
-  display: flex;
-  justify-content: space-between;
-  color: #bbbbbb;
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: flex-end;
+  color: #555;
 
   .footerItem {
     display: flex;
@@ -13,9 +14,6 @@
     .footerLabel {
       padding-right: 5px;
     }
-  }
-  .filterWrap {
-    display: flex;
   }
   .removeCompleted {
     cursor: pointer;
